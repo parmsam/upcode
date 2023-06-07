@@ -1,0 +1,55 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# upcode
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of upcode is to parse R code and provide a visual representation. This package is a work in progress.
+
+## Installation
+
+You can install the development version of upcode from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("parmsam/upcode")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(upcode)
+library(dplyr)
+## basic example code
+# parse R code
+p <- parser(
+  text = "
+    library(dplyr)
+    iris1 <- iris %>%
+      count(Species, Sepal.Length > 7)
+    iris1
+  ")
+# get used functions from code
+get_used_functions(p)
+# get used packages
+get_used_packages(p)
+```
+## Credit
+
+This package is based on functions from [{logrx}](https://github.com/pharmaverse/logrx).
